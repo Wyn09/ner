@@ -1,0 +1,9 @@
+$env:HF_ENDPOINT="https://hf-mirror.com"
+
+ls env:
+
+huggingface-cli download google-bert/bert-base-chinese --local-dir pretrained_models/bert-base-chinese
+huggingface-cli download uer/roberta-base-finetuned-dianping-chinese --local-dir pretrained_models/roberta_dianping
+
+huggingface-cli download --repo-type=dataset --local-dir=datasets/clue/ --include=iflytek/*.* clue/clue
+ 
