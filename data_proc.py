@@ -28,7 +28,7 @@ def read_corpus(file_path):
             tags.append(tag)
     return corpus
 
-def build_dataloader(corpus, tags_t2i, batch_size=4, shuffle=True):
+def build_dataloader(corpus, tags_t2i, batch_size=4, shuffle=True, sampler=None):
     tokenizer = AutoTokenizer.from_pretrained("./pretrained_models/bert-base-chinese")
     
     def batch_data_proc(batch_data):
@@ -42,6 +42,8 @@ def build_dataloader(corpus, tags_t2i, batch_size=4, shuffle=True):
                                is_split_into_words=True, add_special_tokens=False)
         
         return data_input, pad_sequence(tags, batch_first=True, padding_value=-100)
+    if sampler is not None:
+        return DataLoader(corpus, batch_size=batch_size, sampler=sampler, collate_fn=batch_data_proc)
     
     return DataLoader(corpus, batch_size=batch_size, shuffle=shuffle, collate_fn=batch_data_proc)
 
