@@ -170,7 +170,8 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-pretrained_models/
+pretrained_models
 DMSC.csv
 model_seqcls.bin
 best_ner_model.pth
+example_trainer

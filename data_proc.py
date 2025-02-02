@@ -20,10 +20,10 @@ def read_corpus(file_path):
                 tokens, tags = [] ,[]
                 continue
             token, tag = line.split()
-            if token == "":
-                print("EEEE")
-            if tag == "":
-                print("TTTT")
+            # if token == "":
+            #     print("EEEE")
+            # if tag == "":
+            #     print("TTTT")
             tokens.append(token)
             tags.append(tag)
     return corpus
