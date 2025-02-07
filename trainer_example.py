@@ -195,14 +195,14 @@ if __name__ == "__main__":
     )
     
      # 加载评估对象
-    seqeval = evaluate.load("seqeval") # 要开VPN下载，不然会卡住
+    seqeval = evaluate.load("./eval/seqeval") # 要开VPN下载，不然会卡住
 
     # 创建训练对象
     trainer = Trainer(
         model=model,
         args=training_args,
         train_dataset=ds2["train"],
-        processing_class=tokenizer,
+        tokenizer=tokenizer,
         data_collator=data_collator, #Trainer负责对input填充，collator负责对label填充
         eval_dataset=ds2["validation"],
         compute_metrics=compute_metrics,
