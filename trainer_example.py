@@ -78,6 +78,9 @@ def entities_tags_proc(item):
 
 def corpus_porc(item):
     # 语料中文本转换成为模型输入项
+    
+    # 因为分词不区分大小写，CSOL会被映射为[UNK]，所以要转换为csol
+    item["text"] = np.vectorize(str.lower)(item["text"]).tolist()
     input_data = tokenizer(
         item["text"],
         truncation=True,
